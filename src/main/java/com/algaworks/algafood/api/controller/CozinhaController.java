@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
 
-
 //@Controller
 //@ResponseBody
 
