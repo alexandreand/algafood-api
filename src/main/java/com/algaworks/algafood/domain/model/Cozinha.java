@@ -24,6 +24,7 @@ public class Cozinha {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	//Define o payload nos métodos POST e GET
 	@JsonProperty("titulo")
 	@Column(name = "nome")
 	private String nome;
