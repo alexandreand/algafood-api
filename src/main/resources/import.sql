@@ -19,5 +19,5 @@ insert into permissao (descricao) value ('Cliente');
 insert into estado (nome) value ('Rio Grande do Norte');
 insert into estado (nome) value ('Rio Grande do Sul');
 
-insert into cidade (nome) value ('Natal');
-insert into cidade (nome) value ('Porto Alegre');
+insert into cidade (nome, estado_id) value ('Natal', 1);
+insert into cidade (nome, estado_id) value ('Porto Alegre', 2);

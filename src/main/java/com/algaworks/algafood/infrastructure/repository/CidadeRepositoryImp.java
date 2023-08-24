@@ -1,9 +1,11 @@
 package com.algaworks.algafood.infrastructure.repository;
 
+import java.beans.Transient;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
@@ -27,11 +29,13 @@ public class CidadeRepositoryImp implements CidadeRepository{
 	}
 
 	@Override
+	@Transactional
 	public Cidade salvar(Cidade cidade) {
 		return manager.merge(cidade);
 	}
 
 	@Override
+	@Transactional
 	public void remover(Cidade cidade) {
 		manager.remove(buscar(cidade.getId()));
 	}

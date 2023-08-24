@@ -89,26 +89,26 @@ public class CozinhaController {
 		Cozinha cozinhaAtual = cozinhaRepository.buscar(cozinhaId);
 		
 		if(cozinhaAtual != null) {
-			cozinhaAtual.setNome(cozinha.getNome());
+			//cozinhaAtual.setNome(cozinha.getNome());
 			BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");
 			
 			cozinhaAtual = cadastroCozinhaService.salvar(cozinhaAtual);
 			
 			return ResponseEntity.ok(cozinhaAtual);
 		}
-		
 		return ResponseEntity.notFound().build();
 	}
 	
 	@DeleteMapping("/{cozinhaId}")
 	public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId){
 		try {
-			cozinhaRepository.remover(cozinhaId);
-				
+			
+			cadastroCozinhaService.excluir(cozinhaId);
 			return ResponseEntity.noContent().build();
 			
 		}catch(EntidadeEmUsoException e) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
+			
 		}catch (EntidadeNãoEncontradaException e) {
 			return ResponseEntity.notFound().build();
 		}
