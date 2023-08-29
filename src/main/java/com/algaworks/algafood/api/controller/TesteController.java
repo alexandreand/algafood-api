@@ -18,10 +18,11 @@ public class TesteController {
 	@Autowired
 	private CozinhaRepository cozinhaRepository;
 
+	//Não precisa do @RequestParam, bind pode ser feito automaticamente
 	@GetMapping("/cozinhas/por-nome")
 	public List<Cozinha> consultarPorNome(@RequestParam("nome") String nome){
 		System.out.println(nome);
-		return cozinhaRepository.buscarPorNome(nome);
+		return cozinhaRepository.findByNome(nome);
 	}
 	
 }

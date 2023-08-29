@@ -1,5 +1,7 @@
 package com.algaworks.algafood.domain.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +22,15 @@ public class CadastroCidadeService {
 	
 	public Cidade salvar(Cidade cidade) {
 		
-		Estado estado = estadoRepository.buscar(cidade.getEstado().getId());
+		Estado estado = estadoRepository.findById(cidade.getEstado().getId())
+				.orElseThrow(() -> new EntidadeNãoEncontradaException(
+						String.format("Estado com ID: %d não encontrado", cidade.getEstado().getId())));
+		
 		if(estado == null) {
 			throw new EntidadeNãoEncontradaException(String.format("Estado com ID: %d não encontrado", cidade.getEstado().getId()));
 		}
 		cidade.setEstado(estado);
 		
-		return cidadeRepository.salvar(cidade);
+		return cidadeRepository.save(cidade);
 	}
 }

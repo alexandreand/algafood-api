@@ -13,7 +13,7 @@ public class CadastroEstadoService {
 	private EstadoRepository estadoRepository;
 	
 	public Estado salvar(Estado estado) {
-		return estadoRepository.salvar(estado);
+		return estadoRepository.save(estado);
 	}
 	
 	
